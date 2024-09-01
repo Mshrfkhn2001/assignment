@@ -7,25 +7,25 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tasks')
+    axios.get('https://todo-list-backend-isdg.onrender.com/api/tasks')
       .then(res => setTodos(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const addTodo = (todo) => {
-    axios.post('http://localhost:5000/api/tasks', todo)
+    axios.post('https://todo-list-backend-isdg.onrender.com/api/tasks', todo)
       .then(res => setTodos([...todos, res.data]))
       .catch(err => console.error(err));
   };
 
   const updateTodo = (id, updatedtodo) => {
-    axios.put(`http://localhost:5000/api/tasks/${id}`, updatedtodo)
+    axios.put(`https://todo-list-backend-isdg.onrender.com/api/tasks/${id}`, updatedtodo)
       .then(res => setTodos(todos.map(todo => todo._id === id ? res.data : todo)))
       .catch(err => console.error(err));
   };
 
   const deleteTodo = (id) => {
-    axios.delete(`http://localhost:5000/api/tasks/${id}`)
+    axios.delete(`https://todo-list-backend-isdg.onrender.com/api/tasks/${id}`)
       .then(() => setTodos(todos.filter(todo => todo._id !== id)))
       .catch(err => console.error(err));
   };
